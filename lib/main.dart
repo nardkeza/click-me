@@ -49,6 +49,9 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  int _icount = 0;
+
+
 
   void _incrementCounter() {
     setState(() {
@@ -62,6 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
   void _decrementCounter(){
     setState(() {
+      _icount ++;
       _counter --;
     });
   }
@@ -104,13 +108,13 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
               const Text('You have pushed the button this many times:'),
+              Text('$_counter',
+                style: Theme.of(context).textTheme.headline4,
+              ),
               const SizedBox(width: 16),
               FloatingActionButton(
-                onPressed: () {
-                  _incrementCounter();
-                  tooltip: 'Increment';
-
-                },
+                onPressed: _incrementCounter,
+                  tooltip: 'Increment',
                 child: const Icon(Icons.add),
               ),
               ],
@@ -120,13 +124,13 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
               const Text('Clicks removed:'),
+                Text('$_icount',
+                  style: Theme.of(context).textTheme.headline4,
+                ),
               const SizedBox(width: 16),
               FloatingActionButton(
-                onPressed: () {
-                  _decrementCounter();
-                  tooltip: 'Decrement';
-
-               },
+                onPressed: _decrementCounter,
+                  tooltip: 'Decrement',
               child: const Icon(Icons.remove),
             ),
           ],
@@ -139,3 +143,4 @@ class _MyHomePageState extends State<MyHomePage> {
       );
   }
 }
+
